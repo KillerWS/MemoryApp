@@ -8,7 +8,7 @@ import {useDispatch,useSelector} from 'react-redux'
 
 const Form =({currentId,setCurrentId})=>{
 
-    const [postData, setPostData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+    const [postData, setPostData] = useState({ title: '', message: '', tags: '', selectedFile: '' });
   const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
   console.log(post)
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const Form =({currentId,setCurrentId})=>{
 
     const clear = () => {
         setCurrentId(0);
-        setPostData({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+        setPostData({  title: '', message: '', tags: '', selectedFile: '' });
       };
 
       if(!user?.result?.name){
@@ -61,7 +61,9 @@ const Form =({currentId,setCurrentId})=>{
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
             <Typography variant="h6">Creating a Memory</Typography>
-            <TextField 
+            
+            
+            {/* <TextField 
             name="creator" 
             variant="outlined" 
             label="Creator" 
@@ -71,7 +73,9 @@ const Form =({currentId,setCurrentId})=>{
             onChange={(e)=>setPostData({
                 //写法: creator:e.target.value 一改变就会触发OnChange会重置整个数组，但是因为其他属性没有设置所以会只保存creator的设置
                 ...postData,creator:e.target.value
-            })}></TextField>
+            })}></TextField> */}
+
+
             <TextField 
             name="title" 
             variant="outlined" 

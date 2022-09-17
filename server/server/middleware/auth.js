@@ -15,17 +15,20 @@ const auth=async(req,res,next)=>{
         const token = req.headers.authorization.split(" ")[1];
         
         const isCustomAuth = token.length < 500;
-
+        
         let decodedData;
 
         if (token && isCustomAuth) {      
+            //普通登录
             decodedData = jwt.verify(token, secret);
-            
-            
+            console.log("token显示如下")
+            console.log(token)
+            console.log("decodedata显示如下")
+            console.log(decodedData)
             req.userId = decodedData?.id;
         }else{
             //Google登录验证
-            decodedData= jwt.decode(toekn)
+            decodedData= jwt.decode(token)
             req.userId= decodedData?.sub;
         }
         

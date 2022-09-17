@@ -15,17 +15,18 @@ export const getPosts= async(req,res)=>{
         
     }
 }
-
+//完成
 export const createPost=async (req,res)=>{
     const post= req.body
-    console.log('This is createPost, req.body参数:'+req.body)
-    
-    const newPost =new PostMessage(post);
+    console.log('This is createPost, req.body参数:')
+   console.log(post)
+   //把creator直接赋值为 req.userId
+   const newPostMessage = new PostMessage({ ...post, creator: req.userId, createdAt: new Date().toISOString() })
  
     try {
-        await newPost.save();
+        await newPostMessage.save();
         
-        res.status(201).json(newPost);
+        res.status(201).json(newPostMessage);
     } catch (error) {
         //409: Conflict
         res.status(409).json({message:error.message})
@@ -58,18 +59,20 @@ export const deletePost=async(req,res)=>{
 
 }
 
+//完成
 export const likePost=async(req,res)=>{
 
     const {id} =req.params;
+    console.log("req.userId显示如下")
     console.log(req.userId)
     if(!req.userId) return res.json({message:'Unauthenticated'})
     
     if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No post with that id');
     const post =await PostMessage.findById(id)
     
-
+    console.log(post)
     const index = post.likes.findIndex((id) => id ===String(req.userId));
-    // console.log(`index是  ${index}`)
+    console.log(`index是  ${index}`)
     if (index === -1) {
         post.likes.push(req.userId);
       } else {

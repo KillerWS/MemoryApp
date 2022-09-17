@@ -11,8 +11,8 @@ const Posts=({ setCurrentId })=>{
     // 有一个回调函数,返回state.posts
     //回调函数(a)=>a.counter 第一个参数是reducer的实例
     const posts = useSelector((state) => state.posts);
-    console.log('使用useSelector在前端取得帖子(posts)的数据');
-    // console.log(Object.prototype.toString.call(posts));
+    //console.log('使用useSelector在前端取得帖子(posts)的数据');
+    
     console.log(posts);
     //const testData = useSelector((state) => state.test);
     //console.log(testData);

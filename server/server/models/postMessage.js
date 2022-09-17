@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 const postSchema =mongoose.Schema({
     title:String,
     message:String,
+    name:String,
     creator:String,
     tags:[String],
     //将图像用base64转为字符串，所以是string
@@ -13,7 +14,7 @@ const postSchema =mongoose.Schema({
         type:[String],
         default:[]
     },
-    createAt:{
+    createdAt:{
         type:Date,
         default:new Date()
     },

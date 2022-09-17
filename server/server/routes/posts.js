@@ -11,7 +11,7 @@ const router=express.Router();
 router.get('/',getPosts)
 
 //创建新的帖子
-router.post('/',createPost)
+router.post('/',auth,createPost)
 //router.post('/',auth,createPost)
 
 //router.patch() is used for updating existing documents

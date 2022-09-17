@@ -26,6 +26,7 @@ const Navbar = () => {
 //而每次更新都执行会有多余的不必要执行，所以就有了第二个参数数组每次update的时候这个数组里值变化了就会执行，但这只是update阶段，初始化还是会执行
     useEffect(()=>{
         const token=user?.token;
+        //每次渲染组件检查token是否expired
         //JWT...
         setUser(JSON.parse(localStorage.getItem('profile')))
     // },[localStorage.getItem('profile')])

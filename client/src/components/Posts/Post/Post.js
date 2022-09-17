@@ -15,7 +15,7 @@ const Post=({post,setCurrentId})=>{
     const classes=useStyles();
     const dispatch = useDispatch();
     const user=JSON.parse(localStorage.getItem('profile'))
-
+    console.log(post)
     const Likes = () => {
         if (post.likes.length > 0) {
             return post.likes.find((like) => like === (user?.result?.googleId || user?.result?._id))
@@ -34,10 +34,13 @@ const Post=({post,setCurrentId})=>{
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={post.selectedFile} title={post.title}></CardMedia>
             <div className={classes.overlay}>
-                <Typography variant='h6'>{post.creator}</Typography>
+                <Typography variant='h6'>{post.name}</Typography>
                 <Typography variant='body2'>{moment(post.createdAt).fromNow()}</Typography>
             </div>
-            <div className={classes.overlay2}>
+
+            {/* {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) &&( */}
+                {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) &&(
+                <div className={classes.overlay2}>
                 <Button 
                     style={{color:'white'}} 
                     size="small" 
@@ -52,6 +55,10 @@ const Post=({post,setCurrentId})=>{
                     <MoreHorizIcon fontSize="medium"/>
                 </Button>
             </div>
+            )}
+            
+           
+           
             <div className={classes.details}>
             {/* 遍历出tags */}
         <Typography variant="body2" color="textSecondary" component="h2">{post.tags.map((tag) => `#${tag} `)}</Typography>
@@ -81,10 +88,12 @@ const Post=({post,setCurrentId})=>{
           <DeleteIcon fontSize="small" /> Delete
         </Button>
         )} */}
+        {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
+        <Button size="small" color="secondary" onClick={() => dispatch(deletePost(post._id))}>
+          <DeleteIcon fontSize="small" /> Delete
+        </Button>
+        )}
        
-       <Button size="small" color="primary" onClick={()=>dispatch(deletePost(post._id))}>
-        <DeleteIcon fontSize="small"/>Delete
-       </Button>
         </CardActions>
       </CardContent>
         </Card>

@@ -16,7 +16,6 @@ const Home = () => {
     //React 会保存你传递的函数（我们将它称之为 “effect”），并且在执行 DOM 更新之后调用它。
     //接受第二个参数来控制跳过执行，下次 render 后如果指定的值没有变化就不会执行，这里是dispatch
     useEffect(()=>{
-        console.log("useEffect执行")
         dispatch(getPosts());
     },[dispatch])
     
