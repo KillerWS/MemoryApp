@@ -20,7 +20,7 @@ export const createPost=async (req,res)=>{
     const post= req.body
     console.log('This is createPost, req.body参数:')
    console.log(post)
-   //把creator直接赋值为 req.userId
+   //post创建时就直接把creator直接赋值为创建者的req.userId,这样其他的用户就无法删除
    const newPostMessage = new PostMessage({ ...post, creator: req.userId, createdAt: new Date().toISOString() })
  
     try {

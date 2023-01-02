@@ -8,6 +8,8 @@ import {useDispatch,useSelector} from 'react-redux'
 
 const Form =({currentId,setCurrentId})=>{
 
+    const errorinfo =true;
+
     const [postData, setPostData] = useState({ title: '', message: '', tags: '', selectedFile: '' });
   const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
   console.log(post)
@@ -88,14 +90,19 @@ const Form =({currentId,setCurrentId})=>{
             <TextField 
             name="message" 
             variant="outlined" 
-            label="Message" 
+            label="Message"
+            multiline
+            rows={6}
+            maxRows={10} 
             fullWidth
             value={postData.message}
             onChange={(e)=>setPostData({
                 ...postData,message:e.target.value
                 
                 
-            })}></TextField>
+            })}
+            helperText={false?"Incorrect entry.":""}
+            ></TextField>
             <TextField 
             name="tags" 
             variant="outlined" 
