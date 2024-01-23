@@ -1,8 +1,7 @@
 # MemoryApp
 # Build An memory card App using React+Redux+Axios+MUI+GOOGLE Auth
 
-![Uploading 68747470733a2f2f692e6962622e636f2f5a385930434a762f53637265656e73686f742d323032302d31302d33302d61742d31312d31302d30342e706e67.png…]()
-
+![homePage](https://github.com/KillerWS/MemoryApp/assets/39308981/803381dc-4503-4cd8-bb8d-03a13cecb2f4)
 
 
 技术栈：React + MUI组件库 + Express + Nodejs + MongoDB + Axios
