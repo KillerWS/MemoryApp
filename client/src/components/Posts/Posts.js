@@ -6,7 +6,7 @@ import {Grid, CircularProgress} from '@material-ui/core'
 
 const Posts=({ setCurrentId })=>{
 
- 
+
     const classes=useStyles();
     // 有一个回调函数,返回state.posts
     //回调函数(a)=>a.counter 第一个参数是reducer的实例

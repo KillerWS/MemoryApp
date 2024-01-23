@@ -18,6 +18,7 @@ export const getPosts=()=>async(dispatch)=>{
 
         //把后台fetch出来的data(数据库里的内容)通过payload:data发送数据
         //次数使用dispatch(action对象)是因为redux thunk
+        //相当于把数据更新到前端模型react/redux，不直接访问数据
         dispatch({type:FETCH_ALL,payload:data})
     } catch (error) {
         console.log(error.message);
