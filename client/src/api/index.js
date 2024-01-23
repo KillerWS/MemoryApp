@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API=axios.create({baseURL:'http://localhost:5000'})
+
+//const API=axios.create({baseURL:'http://localhost:5000'})
+
+const API=axios.create({baseURL:'https://memoryapp-back-end.onrender.com'})
 //指向后端路由的url
 //旧 const url='http://localhost:5000/posts';
 
